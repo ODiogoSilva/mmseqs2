@@ -23,6 +23,25 @@ You can read on for a quick start guide with installation instructions and examp
 ## Installation
 MMseqs can be installed by compiling the binary from source, download a statically compiled version, or using [Homebrew](https://github.com/Homebrew/brew). MMseqs2 requires a 64-bit system (check with `uname -a | grep x86_64`) with at least the SSE4.1 intruction set (check by executing `cat /proc/cpuinfo | grep sse4_1` on Linux and `sysctl -a | grep machdep.cpu.features | grep SSE4.1` on MacOS).
 
+### Compile on Windows using CygWin pre-requesites
+
+MMseqs2 can be compiled on Windows but first [CygWin](https://www.cygwin.com/) must be installed. When installing the packages for CygWin, make sure to include the "Devel" category as well as the libopenmpi, openmpi and xxd packages.
+
+You will also need to download and compile Google Test and Google Mock. 
+
+        wget https://github.com/google/googletest/archive/release-1.8.0.tar.gz
+		tar -xf release-1.8.0.tar.gz
+		cd googletest-release-1.8.0/googletest/
+		cmake -G"Unix Makefiles"
+		make
+		cp -r include/gtest/ /usr/include/
+		cp lib*.a /usr/local/lib/
+		cd ../googlemock/
+		cmake -G"Unix Makefiles"
+		make
+		cp -r include/gtest/ /usr/include/
+		cp lib*.a /usr/local/lib/
+
 ### Compile from source
 Compiling MMseqs2 from source has the advantage that it will be optimized to the specific system, which should improve its performance. To compile MMseqs2 `git`, `g++` (4.6 or higher) and `cmake` (3.0 or higher) are needed. Afterwards, the MMseqs2 binary will be located in `build/bin/`.
 
@@ -37,7 +56,7 @@ Compiling MMseqs2 from source has the advantage that it will be optimized to the
         
 :exclamation: Please install and use `gcc` from Homebrew, if you want to compile MMseqs2 on MacOS. The default MacOS `clang` compiler does not support OpenMP and MMseqs2 will not be able to run multithreaded. Use the following cmake call:
 
-        CXX="$(brew --prefix)/bin/g++-6" cmake -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=. ..
+        CXX="$(brew --prefix)/bin/g++-6" cmake -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=. ..		
                 
 ### Install static Linux version
 The following command will download the last MMseqs version, extract it and set the `PATH` variable. This version runs only on linux. If you want to run it on Mac please compile it or use brew.
