@@ -29,18 +29,18 @@ MMseqs2 can be compiled on Windows but first [CygWin](https://www.cygwin.com/) m
 
 You will also need to download and compile Google Test and Google Mock. 
 
-        wget https://github.com/google/googletest/archive/release-1.8.0.tar.gz
-		tar -xf release-1.8.0.tar.gz
-		cd googletest-release-1.8.0/googletest/
-		cmake -G"Unix Makefiles"
-		make
-		cp -r include/gtest/ /usr/include/
-		cp lib*.a /usr/local/lib/
-		cd ../googlemock/
-		cmake -G"Unix Makefiles"
-		make
-		cp -r include/gtest/ /usr/include/
-		cp lib*.a /usr/local/lib/
+    wget https://github.com/google/googletest/archive/release-1.8.0.tar.gz
+	tar -xf release-1.8.0.tar.gz
+	cd googletest-release-1.8.0/googletest/
+	cmake -G"Unix Makefiles"
+	make
+	cp -r include/gtest/ /usr/include/
+	cp lib*.a /usr/local/lib/
+	cd ../googlemock/
+	cmake -G"Unix Makefiles"
+	make
+	cp -r include/gtest/ /usr/include/
+	cp lib*.a /usr/local/lib/
 
 ### Compile from source
 Compiling MMseqs2 from source has the advantage that it will be optimized to the specific system, which should improve its performance. To compile MMseqs2 `git`, `g++` (4.6 or higher) and `cmake` (3.0 or higher) are needed. Afterwards, the MMseqs2 binary will be located in `build/bin/`.
